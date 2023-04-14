@@ -3,7 +3,7 @@ class CatsController < ApplicationController
     def index
         @cats = Cat.all 
 
-        render :cats 
+        render :index
     end
 
     def show 
@@ -12,12 +12,19 @@ class CatsController < ApplicationController
         if @cat.save
             render :show 
         else 
-            @cat.errors.full_messages, status: 404 
+           render @cat.errors.full_messages, status: 404 
         end 
     end 
 
+    def create
+        @cat = Cat.new(cat_params)
 
-
+        if @cat.save
+            render :show 
+        else
+            render @cat.errors.full_messages, status: 422
+        end
+    end
 
     private 
 

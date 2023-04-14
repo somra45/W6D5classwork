@@ -6,6 +6,6 @@ Rails.application.routes.draw do
 
   resources :cats, except: [:destroy]
 
-  get "/" , to: "articles#index"  
+  get "/" , to: "cats#index"  
 
 end
