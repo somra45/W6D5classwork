@@ -17,7 +17,8 @@ class Cat < ApplicationRecord
     include ActionView::Helpers::DateHelper
 
     CAT_COLORS = ['orange', 'red', 'brown', 'tan']
-    
+    SEX = ['M', 'F']
+
     validates :birth_date, presence: true
     validates :color, presence: true
     validates :name, presence: true
@@ -34,7 +35,7 @@ class Cat < ApplicationRecord
     end
 
     def inclusion_sex
-        if sex != "M" || "F"
+        if !SEX.include?(self.sex)
             errors.add(:sex, "must be either M or F representing Male or Female")
         end
     end
@@ -46,6 +47,6 @@ class Cat < ApplicationRecord
     end
 
     def age
-        time_ago_in_words(birth_date.years.ago)
+        time_ago_in_words(birth_date)
     end
 end
