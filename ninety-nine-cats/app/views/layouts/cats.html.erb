@@ -1,0 +1,14 @@
+
+<%@cats.each do |cat| %>
+
+<ul>
+    <li>
+        <%=cat.name%>
+    </li>
+        <li>
+            <a href="<%=redirect to cat_url(cat)%>" >
+        </li>
+</ul>
+
+<%end%>
+
